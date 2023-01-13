@@ -5,9 +5,9 @@ app=Flask(__name__)
 
 
 DB_HOST="localhost"
-DB_NAME="Sports_Esports"
+DB_NAME="postgres"
 DB_USER="postgres"
-DB_PASS="hdd@183116"
+DB_PASS="postgres"
 
 
 
@@ -32,19 +32,24 @@ cur=conn.cursor()
 def home():
     return render_template('index.html')
 
+@app.route("/about")
+def about():
+    return render_template('about.html')
+
 @app.route("/data")
 def data_base():
-    result=cur.execute("select hours_watched from chess_2019")
+    result=cur.execute("select year from nfl_2019")
     chess_records=cur.fetchall()
     # result=[1,2,3,4,5,6]
     return jsonify(chess_records)
 
-
+@app.route("/viz")
+def vizual():
+    return render_template('viz.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 
 
 
 
-from config import SOMETHING_USERNAME,SOMETHING_DB,SOMETHING
