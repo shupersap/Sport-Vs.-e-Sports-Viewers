@@ -31,11 +31,11 @@ The group had unlimited options to what the theme would be, but encourage to thi
 
 ## TASKS
 
-1. Decision to review two different data sets: The project team decided to review data from the NFL Data website and EA Sports gaming website.
+1. Decision to review two different data sets: The Team decided to review data from the NFL Data website and EA Sports gaming website.
 
 2. Import Data: The team used an SQL database to import the data from the two websites.
  
-3. App.py: The team used Python to process the imported data and perform any necessary cleaning or manipulation.
+3. App.py: The team used Python to process routes into Json.
  
 4. JS Library: The team used the Google Charts library to visualize the data in a user-friendly and informative way.
  
@@ -45,6 +45,6 @@ The group had unlimited options to what the theme would be, but encourage to thi
 
 7. HTML: The team used HTML to create the structure and layout of the website.
 
-8. Website: The final product is a website that displays the data from the NFL Data website and EA Sports gaming website in a visually appealing and informative way. The website allows users to explore the data and interact with it using various visualization tools.
+8. Website: The final product is a website that displays the data from the NFL Data website and e - Sports gaming website in a visually appealing and informative way. The website allows users to explore the data and interact with it using various visualization tools.
 
-Overall, this data flow showcases how the team used different technologies and programming languages to import, process, visualize, and display the data on a website. The website provides a clear and easy way to understand the data and make insights from it.
+Overall, this data flow showcases how the team used different technologies and programming languages to import, process, visualize, and display the data on a website. The website Provides a clear and easy way to understand the data and make insights from it.
