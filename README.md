@@ -13,7 +13,7 @@ The group had unlimited options to what the theme would be, but encourage to thi
  
 ## 1. Visualization must include a Python Flask powered API, HTML/CSS, JavaScript, and at least one database (SQL, MongoDB, SQLite, etc.). 
 
-## 2. Your project should fall into one of the below four tracks:
+## 2. The project should fall into one of the below four tracks:
 
 ○ A combination of web scraping and Leaflet or Plotly
 
@@ -21,13 +21,13 @@ The group had unlimited options to what the theme would be, but encourage to thi
 
 ○ A “thick” server that performs multiple manipulations on data in a database prior to visualization (must be approved)
 
-## 3. Your project should include at least one JS library that we did not cover.
+## 3. Project should include at least one JS library that we did not cover.
 
-## 4. Your project must be powered by a dataset with at least 100 records.
+## 4. Project must be powered by a dataset with at least 100 records.
 
-## 5. Your project must include some level of user driven interaction, such as menus, dropdowns, and textboxes.
+## 5. Project must include some level of user driven interaction, such as menus, dropdowns, and textboxes.
 
-## 6. If possible, your final visualization should include at least three views
+## 6. Final visualization should include at least three views
 
 ## TASKS
 
