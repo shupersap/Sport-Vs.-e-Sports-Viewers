@@ -29,6 +29,7 @@ The group had unlimited options to what the theme would be, but encourage to thi
 
 ## 6. If possible, your final visualization should include at least three views
 
+## TASKS
 
 1. Decision to review two different data sets: The project team decided to review data from the NFL Data website and EA Sports gaming website.
 
