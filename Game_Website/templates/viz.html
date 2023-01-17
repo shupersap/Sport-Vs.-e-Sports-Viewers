@@ -1,49 +1,72 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <title>Visualizations</title>
-  </head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script>
+    var data = {{data}};
+  </script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      
+      var dataTable = new google.visualization.DataTable();
+      dataTable.addColumn('number', 'Year');
+      dataTable.addColumn('number', 'Viewers in Millions');
+      dataTable.addRows(data);
+
+      var options={hAxis:{format: '####'}}
+      
+      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+      chart.draw(dataTable,options);
+    }
+  </script>
+  <title>Visualizations</title>
+</head>
+
 <body>
-    <!-- NAV BAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Visualizations</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="about">About Us</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="viz">Visualizations</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Data Table</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<!-- Headings -->
-<div class="container mt-3">
+  <!-- NAV BAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Visualizations</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about">About Us</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="viz">Visualizations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Data Table</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Headings -->
+  <div class="container mt-3">
     <h1 class="text-center">Visualizations</h1>
     <div class="mt-5">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc euismod mollis dui at congue. Nullam iaculis, odio non vestibulum fermentum, quam nisi dictum nibh, non aliquet quam felis non erat. Vivamus interdum, leo eget viverra convallis, quam dolor posuere orci, non ultricies diam diam a eros. Aenean tempor auctor enim, id ullamcorper tellus fermentum quis. Duis ac felis in nibh malesuada facilisis at sed lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In hac habitasse platea dictumst. Ut volutpat ultricies ex, sed suscipit quam tincidunt in.</p>
-     </div>
-</div>
-    <!--Charts  -->
-<div class = "container mt-5 " >
-    <div id="growthviz" style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 900px; height: 500px; margin: 0 auto;"></div>
-</div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc euismod mollis dui at congue. Nullam iaculis,
+        odio non vestibulum fermentum, quam nisi dictum nibh, non aliquet quam felis non erat. Vivamus interdum, leo
+        eget viverra convallis, quam dolor posuere orci, non ultricies diam diam a eros. Aenean tempor auctor enim, id
+        ullamcorper tellus fermentum quis. Duis ac felis in nibh malesuada facilisis at sed lacus. Pellentesque habitant
+        morbi tristique senectus et netus et malesuada fames ac turpis egestas. In hac habitasse platea dictumst. Ut
+        volutpat ultricies ex, sed suscipit quam tincidunt in.</p>
+    </div>
+  </div>
+  <!--Charts  -->
+  <div id="chart_div"></div>
 
-<div class = "container mt-5">
-<div id="pie-chart-1" class="mb-5" style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 450px; height: 400px; float: left;"></div>
-<div id="pie-chart-2" class="mb-5" style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); width: 450px; height: 400px; float: right;"></div>
-</div>
 
 </body>
