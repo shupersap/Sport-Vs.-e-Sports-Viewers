@@ -9,37 +9,62 @@
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <script type="text/javascript">
-    google.charts.load('current', { 'packages': ['corechart', 'controls'] });
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
+    google.charts.load('current', { 'packages': ['corechart', 'line'] });
+    google.charts.setOnLoadCallback(drawNflChart);
+    
+    function drawNflChart() {
+      var nflMeans = new google.visualization.arrayToDataTable([
+          ['Year', 'Average NFL Viewers (in Millions)'],
+          [2017 , 14.925342592592589],
+          [2018, 15.55550458715596],
+          [2019, 16.31212962962963],
+          [2020, 14.89874999999999],
+          [2021, 16.26427272727273]
+        ]);
       
-      var dataTable = new google.visualization.DataTable();
-      dataTable.addColumn('number', 'Year');
-      dataTable.addColumn('number', 'Viewers in Millions');
-      dataTable.addRows(data);
-
-      var yearDropdown = new google.visualization.ControlWrapper({
-        'controlType': 'CategoryFilter',
-        'containerId': 'year_filter_div',
-        'options': {
-          'filterColumnLabel': 'Year',
-          'ui': {
-            'label': 'Year:',
-            'allowTyping': false,
-            'allowMultiple': false
-          }
+      var options = {
+        hAxis: {
+          title: 'Year',
+          format: '####'
+        },
+        vAxis: {
+          title: 'Viewers (in Millions)'
         }
-      });
+        
+      };
 
-      var timeline = new google.visualization.ChartWrapper({
-        'chartType': 'LineChart',
-        'containerId': 'chart_div',
-        'options': {hAxis: { format: '####' }}
-      });
+      var chart = new google.visualization.LineChart(document.getElementById('nfl_chart'));
+      chart.draw(nflMeans, options);
+    }
+  </script>
 
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      chart.draw(dataTable, options);
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart', 'line'] });
+    google.charts.setOnLoadCallback(drawEsportsChart);
+    
+    function drawEsportsChart() {
+      var esportsMeans = new google.visualization.arrayToDataTable([
+          ['Year', 'Average Esports Viewers (in Millions)'],
+          [2017 , 0.155302],
+          [2018, 0.149869],
+          [2019, 0.148566],
+          [2020, 0.141954],
+          [2021, 0.167478]
+        ]);
+      
+      var options = {
+        hAxis: {
+          title: 'Year',
+          format: '####' 
+        },
+        vAxis: {
+          title: 'Viewers (in Millions)'
+        },
+        colors: ['red']
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('esports_chart'));
+      chart.draw(esportsMeans, options);
     }
   </script>
   <title>Visualizations</title>
@@ -83,9 +108,13 @@
     </div>
   </div>
   <!--Charts  -->
-  <div id="dashboard_div">
-    <div id="year_filter_div"></div>
-    <div id="chart_div" style="width: px; height: 450px;"></div>
+  <div class="row">
+    <div class="col-md-6">
+      <div id="nfl_chart" style="width: 900px; height: 450px;"></div>
+    </div>
+    <div class="col-md-6">
+      <div id="esports_chart" style="width: 900px; height: 450px;"></div>
+    </div>
   </div>
 
 </body>
