@@ -23,11 +23,6 @@ def about():
 def visualizations():
     return render_template("viz.html")
 
-@app.route("/data")
-def data_base():
-    result=cur.execute("select year from nfl_2019")
-    return jsonify(result)
-
 @app.route("/visualizations_nfl_yearly_mean")
 def nfl_yearly_mean():
     cur=conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -40,15 +35,25 @@ union
 select avg("Viewers (in Millions)"), "Year" from nfl_2018 group by "Year"
 union
 select avg("Viewers (in Millions)"), "Year" from nfl_2017 group by "Year" order by "Year"''')
-    data=cur.fetchall()
+    data_one=cur.fetchall()
     cur.close()
-    data = [ [y,x] for x,y in data]
-    return render_template("viz.html",data=data)
+    data_one = [ [y,x] for x,y in data_one]
+    return render_template("viz.html",data_one=data_one)
     # return jsonify(data)
 
-@app.route("/visualizations_nfl_year_max")
-def nfl_yearly_max():
-    cur=conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+# @app.route("/visualizations_nfl_year_max")
+# def nfl_yearly_max():
+#     cur=conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+#     cur.execute('''select max("Viewers (in Millions)"), "Year" from nfl_2020 group by "Year"
+# union
+# select max("Viewers (in Millions)"), "Year" from nfl_2021 group by "Year"
+# union
+# select max("viewers (in Millions)"), "year" from nfl_2019 group by "year"
+# union
+# select max("Viewers (in Millions)"), "Year" from nfl_2018 group by "Year"
+# union
+# select max("Viewers (in Millions)"), "Year" from nfl_2017 group by "Year" order by "Year"''')
+#     data=cur.fetchall()
 # @app.route("/esports_yearly_mean")
 
 # @app.route("/each_esports_yearly_mean")

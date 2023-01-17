@@ -4,12 +4,12 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <script>
-    var data = {{data}};
+    var data = {{ data_one }};
   </script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <script type="text/javascript">
-    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.load('current', { 'packages': ['corechart', 'controls'] });
     google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
@@ -19,10 +19,27 @@
       dataTable.addColumn('number', 'Viewers in Millions');
       dataTable.addRows(data);
 
-      var options={hAxis:{format: '####'}}
-      
+      var yearDropdown = new google.visualization.ControlWrapper({
+        'controlType': 'CategoryFilter',
+        'containerId': 'year_filter_div',
+        'options': {
+          'filterColumnLabel': 'Year',
+          'ui': {
+            'label': 'Year:',
+            'allowTyping': false,
+            'allowMultiple': false
+          }
+        }
+      });
+
+      var timeline = new google.visualization.ChartWrapper({
+        'chartType': 'LineChart',
+        'containerId': 'chart_div',
+        'options': {hAxis: { format: '####' }}
+      });
+
       var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-      chart.draw(dataTable,options);
+      chart.draw(dataTable, options);
     }
   </script>
   <title>Visualizations</title>
@@ -66,7 +83,9 @@
     </div>
   </div>
   <!--Charts  -->
-  <div id="chart_div"></div>
-
+  <div id="dashboard_div">
+    <div id="year_filter_div"></div>
+    <div id="chart_div" style="width: px; height: 450px;"></div>
+  </div>
 
 </body>
