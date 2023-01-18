@@ -67,6 +67,57 @@
       chart.draw(esportsMeans, options);
     }
   </script>
+  <script>
+    google.charts.load('current', { 'packages': ['corechart', 'controls'] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Game');
+      data.addColumn('number', 'Peak Viewer');
+      data.addColumn('number', 'Year');
+      data.addRows([['lol', 2102206, 2017],
+      ['lol', 2050475, 2018],
+      ['lol', 3985787, 2019],
+      ['lol', 3882252, 2020],
+      ['lol', 4018728, 2021],
+      ['csgo', 1329096, 2017],
+      ['csgo', 1329096, 2018],
+      ['csgo', 1002132, 2019],
+      ['csgo', 2748434, 2020],
+      ['csgo', 925375, 2021],
+      ['dota2', 925375, 2017],
+      ['dota2', 1205979, 2018],
+      ['dota2', 1965328, 2019],
+      ['dota2', 508082, 2020],
+      ['dota2', 2741514, 2021],
+      ['pubg-mobile', 0, 2017],
+      ['pubg-mobile', 418026, 2018],
+      ['pubg-mobile', 596824, 2019],
+      ['pubg-mobile', 3801998, 2020],
+      ['pubg-mobile', 3801998, 2021]]);
+      var yearDropdown = new google.visualization.ControlWrapper({
+        'controlType': 'CategoryFilter',
+        'containerId': 'year_filter_div',
+        'options': {
+          'filterColumnLabel': 'Year',
+          'ui': {
+            'label': 'Year:',
+            'allowTyping': false,
+            'allowMultiple': false,
+          }
+        },
+      });
+      var Piechart = new google.visualization.ChartWrapper({
+        'chartType': 'PieChart',
+        'containerId': 'chart1',
+        'options': {
+          'width': 600,
+          'height': 300,
+        }
+      });
+      var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard_div')).bind(yearDropdown, Piechart).draw(data);
+    }
+  </script>
   <title>Visualizations</title>
 </head>
 
@@ -108,6 +159,10 @@
     <div class="col-md-6">
       <div id="esports_chart" style="width: 900px; height: 450px;"></div>
     </div>
+  </div>
+  <div id="dashboard_div">
+    <div id="year_filter_div"></div>
+    <div id="chart1" style="width: px; height: 450px;"></div>
   </div>
 
 </body>
